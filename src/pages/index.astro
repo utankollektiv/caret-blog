@@ -1,0 +1,94 @@
+---
+import TextFigure from "../components/TextFigure.astro";
+import Utan from "../components/Utan.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="^utan blog">
+  <h2 class="mb-8">
+    a collective of people interested in accessibility, privacy and user
+    experience.
+  </h2>
+  <div class="prose-nord prose dark:prose-invert">
+    <p>
+      We are a group of people who want to make the web a better place. We are
+      not a company, we are not a startup, we are not a non-profit. We are just
+      a group of people who want to make the web a better place.
+    </p>
+
+    <h2>Etymology for nerds</h2>
+
+    <p>
+      So whats behind the name <Utan>^[utan]*</Utan>? Well, it's a few things:
+    </p>
+
+    <dl>
+      <dt>Starting at the beginning</dt>
+      <dd>
+        The caret (<Utan>^</Utan>) is not just a marker for insertion or the
+        start of a string in regex, it heralds the onset of creation and the
+        birth of new concepts.
+      </dd>
+      <dt>Embracing Minimalism</dt>
+      <dd>
+        Merging the Swedish <Utan>[utan]</Utan> for 'without' with the Latin
+        root 'careō', 'utan' reflects a philosophy of simplicity, focusing on
+        the essential and discarding the superfluous. It also makes for fun
+        prefixes for projects.
+      </dd>
+      <dt>Symbol of Possibility</dt>
+      <dd>
+        The asterisk (<span class="font-mono font-bold">*</span>) is a wildcard
+        in regex, standing for the boundless and the particular, embodying the
+        brand's reach across the vast spectrum of high and low, everything and
+        nothing.
+      </dd>
+    </dl>
+
+    <p>So it's a play on language, code and philosophy.</p>
+
+    <h2>Logo</h2>
+
+    <div></div>
+    <TextFigure
+      figureText="^[utan]*"
+      caption="Prefered were possible, either as SVG or just text set in any monospaced font."
+    />
+    <TextFigure
+      figureText="^"
+      caption="The shortest form, useful for prefixing things."
+    />
+    <TextFigure
+      figureText="utan"
+      caption="If special characters are not allowed this form is acceptable."
+    />
+    <TextFigure
+      figureText="tak utan stjärnor"
+      caption="A pronounceable version in Swedish."
+    />
+    <TextFigure
+      figureText="roof without stars"
+      caption="A pronounceable version in English."
+    />
+    <TextFigure
+      figureText="caret without splat"
+      caption="A pronounceable version in English."
+    />
+    <TextFigure
+      figureText="^/member"
+      caption="A member of ^[utan]* may stylize their username like so."
+    />
+
+    <h3>syradar</h3>
+
+    <TextFigure figureText="syradar" caption="Personal username for me." />
+    <TextFigure
+      figureText="~"
+      caption="Short form of syradar and means home folder on Unix systems."
+    />
+    <TextFigure
+      figureText="^/~"
+      caption="Stylized version of syradar at ^[utan]*"
+    />
+  </div>
+</Layout>

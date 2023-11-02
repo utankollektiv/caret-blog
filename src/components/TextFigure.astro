@@ -1,0 +1,21 @@
+---
+import Utan from "./Utan.astro";
+
+type Props = {
+  figureText: string;
+  caption: string;
+};
+
+const { caption, figureText } = Astro.props;
+---
+
+<figure>
+  <div
+    class="border-nord-4 dark:border-nord-1 grid place-content-center rounded border-2 bg-white p-4 text-3xl text-black dark:bg-black dark:text-white"
+  >
+    <Utan>{figureText}</Utan>
+  </div>
+  <figcaption class="mt-1 text-sm">
+    {caption}
+  </figcaption>
+</figure>
