@@ -17,9 +17,14 @@ const allBlogPosts = await getCollection("blog");
   <ul class="flex flex-col gap-4">
     {
       allBlogPosts.map((post) => (
-        <li class="bg-nord-5 dark:bg-nord-1 dark:shadow-nord-0 flex flex-col gap-1 rounded p-4 shadow-md">
-          <Link url={`/blog/${post.slug}`}>{post.data.title}</Link>
-          <TagList tags={post.data.tags} />
+        <li class="flex flex-col gap-1 rounded bg-nord-5 p-4 shadow-md dark:bg-nord-1 dark:shadow-nord-0">
+          <Link url={`/blog/${post.slug}`} transition:name={post.data.title}>
+            {post.data.title}
+          </Link>
+          <TagList
+            tags={post.data.tags}
+            transition:name={post.data.title + "-" + post.data.tags.join(":")}
+          />
         </li>
       ))
     }

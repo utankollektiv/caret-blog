@@ -1,4 +1,5 @@
 ---
+import Prose from "../components/Prose.astro";
 import TagList from "../components/TagList.astro";
 import Layout from "./Layout.astro";
 
@@ -7,26 +8,32 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title}>
   <header class="mb-2">
-    <h1 class="text-nord-10 dark:text-nord-7 mb-1 font-mono text-2xl font-bold">
+    <h1
+      class="mb-1 font-mono text-4xl font-bold text-nord-0 dark:text-nord-6"
+      transition:name={frontmatter.title}
+    >
       {frontmatter.title}
     </h1>
     <p>
-      Written by <span class="text-nord-10 font-mono font-bold">
+      Written by <span class="font-mono font-bold text-nord-10">
         {frontmatter.author}
       </span>
     </p>
 
-    <TagList tags={frontmatter.tags} />
+    <TagList
+      tags={frontmatter.tags}
+      transition:name={frontmatter.title + frontmatter.tags.join(":")}
+    />
 
     <div
-      class="bg-nord-4 text-nord-1 dark:bg-nord-1 dark:text-nord-6 mb-8 mt-8 grid aspect-video w-full max-w-3xl place-content-center
-      rounded-lg shadow"
+      class="mb-8 mt-8 grid aspect-video w-full max-w-3xl place-content-center rounded-lg bg-nord-4 text-nord-1 shadow
+      dark:bg-nord-1 dark:text-nord-6"
     >
       {frontmatter.image ? "image" : "no-image"}
     </div>
 
-    <div class="prose-nord prose prose-sm dark:prose-invert">
+    <Prose>
       <slot />
-    </div>
+    </Prose>
   </header>
 </Layout>
