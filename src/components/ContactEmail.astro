@@ -2,22 +2,26 @@
 import Utan from "./Utan.astro";
 ---
 
-<label for="honeypoy-robots">
-  <div class="mb-2 text-sm font-medium">
-    Type <span id="robots" class="font-mono text-nord-15">
-      &#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;
-    </span> to reveal our email address:
-  </div>
+<form action="">
   <input type="hidden" id="request-token" name="request-token" value="" />
-  <input
-    type="text"
-    name="honeypot-robots"
-    id="honeypot-robots"
-    class="rounded border border-nord-2
-    shadow dark:bg-nord-1"
-    value=""
-  />
-</label>
+  <div class="flex flex-col gap-1">
+    <label for="honeypot-robots" class="font-medium">
+      Type "<span id="robots" class="font-mono font-medium dark:text-nord-15">
+        &#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;
+      </span>" to reveal our email address:
+    </label>
+    <input
+      type="text"
+      name="honeypot-robots"
+      id="honeypot-robots"
+      class="max-w-xs rounded border
+    border-nord-4 bg-nord-6
+    shadow dark:border-nord-2
+    dark:bg-nord-1"
+      value=""
+    />
+  </div>
+</form>
 
 <p class="hidden transition-colors dark:hover:text-nord-8">
   <Utan>

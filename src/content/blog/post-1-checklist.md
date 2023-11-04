@@ -2,9 +2,11 @@
 title: "Post-Coding Session Self-Reflection Checklist"
 description: "Things to consider when reflecting on your coding session."
 author: "~"
-# image:
-#   url: "https://docs.astro.build/assets/full-logo-light.png"
-#   alt: "The full Astro logo."
+image:
+  src: "./post-1.png"
+  alt: "A screenshot of the start page."
+  w: 1266
+  h: 593
 tags: ["flow", "self-reflection", "blogging"]
 authorContact: "utankollektiv@protonmail.com"
 language: "en"

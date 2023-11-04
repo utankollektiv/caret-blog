@@ -1,0 +1,67 @@
+---
+import Link from "../components/Link.astro";
+import Prose from "../components/Prose.astro";
+import Utan from "../components/Utan.astro";
+import UtanLogo from "../components/UtanLogo.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="^utan about">
+  <Prose>
+    <h1>About <UtanLogo /></h1>
+
+    <p>
+      ^[utan]* is meant to be a place free from the shackles of work, making
+      money and products. This place aims to be both free as in speech and free
+      as in free beer<Link url="#cite-note-1">
+        <sup id="cite-ref-1">1</sup>
+      </Link>.
+    </p>
+
+    <p>
+      We are tired of the constant pressure to be productive, to be creative, to
+      hustle. Longing for a simpler time in the cradle of the Internet. A time
+      when the web was a place for exploration, for learning, for fun. A time
+      when the web was a place for <Utan>people</Utan>.
+    </p>
+
+    <p>
+      We are not here to make money, we are not here to make products, we are
+      not here to make content. We are here to make <Utan>experiences</Utan>.
+    </p>
+
+    <p>Things that we like:</p>
+
+    <ul class="text-lg">
+      <li>Privacy - The right to be left alone</li>
+      <li>
+        Accessibility - The right to be included and to be able to participate
+        in society
+      </li>
+      <li>
+        User Experience - The right to be treated with respect and dignity
+      </li>
+    </ul>
+
+    <p>
+      We make no claim to be perfect, consistent or even good. We are just
+      trying to do our best and we hope you will join us on this journey.
+    </p>
+
+    <Utan>
+      <UtanLogo />
+    </Utan>
+  </Prose>
+  <footer class="mt-12">
+    <ul class="">
+      <li id="cite-note-1">
+        <span class="mr-2">
+          <Link url="#cite-ref-1">^</Link>
+        </span>
+        <Link url="https://en.wikipedia.org/wiki/Gratis_versus_libre">
+          Gratis versus libre
+        </Link> on Wikipedia.
+      </li>
+    </ul>
+  </footer>
+</Layout>

@@ -4,6 +4,7 @@ import { ViewTransitions } from "astro:transitions";
 import Utan from "../components/Utan.astro";
 import Prose from "../components/Prose.astro";
 import ContactEmail from "../components/ContactEmail.astro";
+import UtanLogo from "../components/UtanLogo.astro";
 
 interface Props {
   title: string;
@@ -33,9 +34,20 @@ const { title } = Astro.props;
             <Utan>^[utan]*</Utan>
           </a>
         </h1>
-        <a href="/blog" class="text-nord-6 transition-colors hover:text-nord-8">
-          <Utan>^blog</Utan>
-        </a>
+        <div class="flex gap-2">
+          <a
+            href="/blog"
+            class="transition-colors hover:text-nord-8 dark:text-nord-6"
+          >
+            <Utan>^blog</Utan>
+          </a>
+          <a
+            href="/about"
+            class="transition-colors hover:text-nord-8 dark:text-nord-6"
+          >
+            <Utan>about</Utan>
+          </a>
+        </div>
       </header>
       <section class="container mx-auto px-4">
         <slot />
@@ -46,10 +58,11 @@ const { title } = Astro.props;
         <Prose>
           <h2>Contact</h2>
 
-          <ContactEmail client:load />
+          <ContactEmail />
 
-          <p class="mt-8 text-nord-4">
-            Code MIT licensed. Content CC BY-NC-SA 4.0.
+          <p class="mt-8 text-nord-3 dark:text-nord-4">
+            Code is licensed as MIT and Content is licensed as CC BY-NC-SA 4.0
+            &copy; 2023 <UtanLogo />.
           </p>
         </Prose>
       </div>
