@@ -1,0 +1,118 @@
+---
+import Utan from "./Utan.astro";
+---
+
+<label for="honeypoy-robots">
+  <div class="mb-2 text-sm font-medium">
+    Type <span id="robots" class="font-mono text-nord-15">
+      &#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;
+    </span> to reveal our email address:
+  </div>
+  <input type="hidden" id="request-token" name="request-token" value="" />
+  <input
+    type="text"
+    name="honeypot-robots"
+    id="honeypot-robots"
+    class="rounded border border-nord-2
+    shadow dark:bg-nord-1"
+    value=""
+  />
+</label>
+
+<p class="hidden transition-colors dark:hover:text-nord-8">
+  <Utan>
+    <div data-id="email"></div>
+  </Utan>
+</p>
+
+<script>
+  const sce =
+    "&#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;";
+
+  // This function is for decoding the HTML entities back to normal text
+  function decodeHtmlEntities(str: string) {
+    return str.replace(/&#x([a-fA-F0-9]+);/g, (_, code) =>
+      String.fromCharCode(parseInt(code, 16)),
+    );
+  }
+
+  // Testing the decoding function
+
+  export function inputHandler(event: Event) {
+    if (event.target instanceof HTMLInputElement) {
+      console.log("label", event.target.value);
+
+      const val = event.target.value.trim().toLowerCase();
+
+      if (val === decodeHtmlEntities(sce)) {
+        const token: HTMLInputElement | null =
+          document.querySelector("#request-token");
+
+        if (token == null || token === undefined) {
+          return;
+        }
+
+        if (token.value === null || token.value === undefined) {
+          return;
+        }
+
+        if (token.value.length > 0 || token.value !== "") {
+          return;
+        }
+
+        event.target.parentElement?.removeChild(event.target);
+
+        const email = document.querySelector("[data-id=email]");
+
+        if (email) {
+          [
+            "&#117;",
+            "&#116;",
+            "&#097;",
+            "&#110;",
+            "&#107;",
+            "&#111;",
+            "&#108;",
+            "&#108;",
+            "&#101;",
+            "&#107;",
+            "&#116;",
+            "&#105;",
+            "&#118;",
+            "&#064;",
+            "&#112;",
+            "&#114;",
+            "&#111;",
+            "&#116;",
+            "&#111;",
+            "&#110;",
+            "&#109;",
+            "&#097;",
+            "&#105;",
+            "&#108;",
+            "&#046;",
+            "&#099;",
+            "&#111;",
+            "&#109;",
+          ].forEach((char) => {
+            const span = document.createElement("span");
+            span.innerHTML = char;
+            email.appendChild(span);
+          });
+        }
+      }
+    }
+  }
+
+  const sceSpan = document.querySelector("#robots");
+
+  if (sceSpan) {
+    sceSpan.innerHTML = sce;
+  }
+
+  const robotsInput = document.querySelector("#honeypot-robots");
+
+  if (robotsInput) {
+    (robotsInput as HTMLInputElement).addEventListener("keyup", inputHandler);
+  }
+</script>
