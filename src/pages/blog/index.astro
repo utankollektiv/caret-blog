@@ -2,32 +2,40 @@
 import { getCollection } from "astro:content";
 
 import Link from "../../components/Link.astro";
-import Utan from "../../components/Utan.astro";
-import Layout from "../../layouts/Layout.astro";
+import Prose from "../../components/Prose.astro";
 import { formatDate } from "../../dates";
+import Layout from "../../layouts/Layout.astro";
 
 const allBlogPosts = await getCollection("blog");
 ---
 
 <Layout title="^utan blog">
-  <h1 class="mb-8 text-4xl">
-    <Utan>blog archive</Utan>
-  </h1>
+  <header class="mb-8">
+    <Prose fake>
+      <h1>^blog archive</h1>
+    </Prose>
+  </header>
 
   <ul class="flex flex-col gap-4">
     {
       allBlogPosts.map((post) => (
-        <li class="flex flex-col gap-2 md:flex-row">
-          <div
-            class="text-nord-3"
-            transition:name={post.data.title + post.data.publishDate}
-          >
-            {formatDate(post.data.publishDate)}
-          </div>
+        <li>
+          <Prose fake>
+            <div class="flex flex-col gap-2 prose-h2:m-0 ">
+              <Link
+                url={`/blog/${post.slug}`}
+                transition:name={post.data.title}
+              >
+                <h2 class="transition-colors duration-300 hover:text-red-500">
+                  {post.data.title}
+                </h2>
+              </Link>
 
-          <Link url={`/blog/${post.slug}`} transition:name={post.data.title}>
-            {post.data.title}
-          </Link>
+              <div class=" text-slate-600 dark:text-slate-300">
+                {formatDate(post.data.publishDate)}
+              </div>
+            </div>
+          </Prose>
         </li>
       ))
     }

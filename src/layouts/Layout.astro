@@ -1,16 +1,21 @@
 ---
+// Supports weights 300-700
+import "@fontsource-variable/cormorant";
+
 import { ViewTransitions } from "astro:transitions";
 
 import Utan from "../components/Utan.astro";
 import Prose from "../components/Prose.astro";
 import ContactEmail from "../components/ContactEmail.astro";
 import UtanLogo from "../components/UtanLogo.astro";
+import Link from "../components/Link.astro";
 
 interface Props {
   title: string;
+  pageType: "start" | "blog";
 }
 
-const { title } = Astro.props;
+const { title, pageType } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,50 +30,90 @@ const { title } = Astro.props;
     <ViewTransitions />
   </head>
   <body
-    class="mb-24 bg-nord-6 text-nord-0 transition-colors duration-300 dark:bg-nord-0 dark:text-nord-6"
+    class="flex min-h-screen flex-col bg-stone-50 font-serif text-slate-800 dark:bg-stone-950 dark:font-medium dark:text-slate-100"
   >
     <main class="mb-24">
-      <header class="mb-4 flex justify-between px-4 py-2">
+      <header class="mb-12 flex justify-between px-4 py-2">
         <h1 class="text-xl">
-          <a class="transition-colors dark:hover:text-nord-8" href="/">
-            <Utan>^[utan]*</Utan>
+          <a aria-label="utan" class="group" href="/">
+            <Utan>
+              <span
+                class="transition-colors duration-[1s] group-hover:text-slate-500 dark:group-hover:text-slate-300"
+                >^[</span
+              >
+              <span
+                class="transition-colors duration-[1s] group-hover:text-cyan-400 dark:group-hover:text-cyan-300"
+                >u</span
+              >
+              <span
+                class="transition-colors duration-[1s] group-hover:text-fuchsia-400 dark:group-hover:text-fuchsia-300"
+                >t</span
+              >
+              <span
+                class="transition-colors duration-[1s] group-hover:text-yellow-400 dark:group-hover:text-yellow-300"
+                >a</span
+              >
+              <span
+                class="transition-colors duration-[1s] group-hover:text-black dark:group-hover:text-neutral-300"
+                >n</span
+              >
+              <span
+                class="transition-colors duration-[1s] group-hover:text-slate-500 dark:group-hover:text-slate-300"
+                >]*</span
+              >
+            </Utan>
           </a>
         </h1>
         <div class="flex gap-2">
-          <a
-            href="/blog"
-            class="transition-colors hover:text-nord-8 dark:text-nord-6"
-          >
+          <Link url="/blog">
             <Utan>^blog</Utan>
-          </a>
-          <a
-            href="/about"
-            class="transition-colors hover:text-nord-8 dark:text-nord-6"
-          >
+          </Link>
+          <Link url="/about">
             <Utan>about</Utan>
-          </a>
+          </Link>
         </div>
       </header>
-      <section class="container mx-auto px-4">
+      <section
+        class={`container mx-auto 
+        ${pageType === "start" ? "px-12" : "px-4 lg:max-w-prose"}
+        `}
+      >
         <slot />
       </section>
     </main>
-    <footer>
+    <footer class="mt-auto">
       <div class="container mx-auto px-4 py-2">
-        <Prose>
+        <Prose fake>
           <h2>Contact</h2>
 
           <ContactEmail />
 
-          <p class="mt-8 text-nord-3 dark:text-nord-4">
+          <p class="mt-8">
             Code is licensed as MIT and Content is licensed as CC BY-NC-SA 4.0
-            &copy;
-            {new Date().getFullYear()}{" "}
-            <UtanLogo />.
+            &copy;{" "}<span>{new Date().getFullYear()}</span>
+            {" "}<span><UtanLogo />.</span>
           </p>
         </Prose>
       </div>
     </footer>
+    <div class="mt-24 flex">
+      <div
+        class="h-4 w-full bg-gradient-to-r from-cyan-400 to-transparent dark:bg-gradient-to-l"
+      >
+      </div>
+      <div
+        class="h-4 w-full bg-gradient-to-r from-fuchsia-400 to-transparent dark:bg-gradient-to-l"
+      >
+      </div>
+      <div
+        class="h-4 w-full bg-gradient-to-r from-yellow-400 to-transparent dark:bg-gradient-to-l"
+      >
+      </div>
+      <div
+        class="h-4 w-full bg-gradient-to-r from-black to-transparent dark:bg-gradient-to-l"
+      >
+      </div>
+    </div>
     <style is:global></style>
   </body>
 </html>

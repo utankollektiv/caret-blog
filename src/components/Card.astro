@@ -1,5 +1,21 @@
-<div
-  class="rounded-2xl border border-nord-4 bg-nord-5 p-8 dark:border-nord-3 dark:bg-nord-1"
->
-  <slot />
+<div class="relative p-2">
+  <div
+    class="absolute left-0 top-0 h-2 w-2 border-b border-r border-stone-300 dark:border-stone-700"
+  >
+  </div>
+  <div
+    class="absolute right-0 top-0 h-2 w-2 border-b border-l border-stone-300 dark:border-stone-700"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 h-2 w-2 border-r border-t border-stone-300 dark:border-stone-700"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 h-2 w-2 border-l border-t border-stone-300 dark:border-stone-700"
+  >
+  </div>
+  <div class="h-full rounded-xl bg-stone-100 p-4 dark:bg-stone-900">
+    <slot />
+  </div>
 </div>

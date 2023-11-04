@@ -11,10 +11,13 @@ const { tags } = Astro.props;
 
 {
   tags.length > 0 ? (
-    <ul class="flex flex-wrap gap-2">
-      {tags.map((tag) => (
-        <li class="text-sm text-nord-1 dark:text-nord-8 ">{tag}</li>
-      ))}
-    </ul>
+    <div>
+      Tagged with:
+      <ul class="inline-flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <li class="text-sm">{tag}</li>
+        ))}
+      </ul>
+    </div>
   ) : null
 }

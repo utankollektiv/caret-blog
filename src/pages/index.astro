@@ -3,22 +3,29 @@ import Card from "../components/Card.astro";
 import Prose from "../components/Prose.astro";
 import TextFigure from "../components/TextFigure.astro";
 import Utan from "../components/Utan.astro";
+import UtanLogo from "../components/UtanLogo.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="^utan blog">
+<Layout title="^utan blog" pageType="start">
   <section class="mb-16">
-    <h2 class="group mb-8 font-mono text-3xl font-bold lg:max-w-lg">
-      a collective of people interested in <span
-        class="transition-colors group-hover:dark:text-nord-8"
+    <h1
+      class="group mb-8 font-mono text-3xl font-bold lg:max-w-prose"
+      style="max-inline-size: 40ch;text-wrap: pretty;"
+    >
+      <UtanLogo />
+       is a collective of people interested in <span
+        class="transition-colors duration-300 group-hover:text-cyan-400 dark:group-hover:text-cyan-300"
         >accessibility</span
-      >, <span class="transition-colors group-hover:dark:text-nord-7"
+      >, <span
+        class="transition-colors duration-300 group-hover:text-fuchsia-400 dark:group-hover:text-fuchsia-300"
         >privacy</span
-      > and <span class="transition-colors group-hover:dark:text-nord-15"
+      > and <span
+        class="transition-colors duration-300 group-hover:text-yellow-400 dark:group-hover:text-yellow-300"
         >user experience</span
       >.
-    </h2>
-    <div class="prose prose-lg prose-nord dark:prose-invert">
+    </h1>
+    <div class="prose prose-lg prose-slate dark:prose-invert">
       <p>
         We are a group of people who want to make the web a better place. We are
         not a company, we are not a startup, we are not a non-profit. We are
@@ -71,7 +78,7 @@ import Layout from "../layouts/Layout.astro";
       </Prose>
     </header>
 
-    <div class="grid w-full gap-4 sm:grid-cols-2 lg:gap-8">
+    <div class="flex flex-col gap-8">
       <Card>
         <TextFigure
           figureText="^[utan]*"
@@ -113,32 +120,6 @@ import Layout from "../layouts/Layout.astro";
         <TextFigure
           figureText="^/member"
           caption="A member of ^[utan]* may stylize their username like so."
-        />
-      </Card>
-    </div>
-  </section>
-
-  <section>
-    <header class="mb-4">
-      <Prose>
-        <h3>syradar</h3>
-      </Prose>
-    </header>
-
-    <div class="grid gap-4 sm:grid-cols-2 lg:gap-8">
-      <Card>
-        <TextFigure figureText="syradar" caption="Personal username for me." />
-      </Card>
-      <Card>
-        <TextFigure
-          figureText="~"
-          caption="Short form of syradar and means home folder on Unix systems."
-        />
-      </Card>
-      <Card>
-        <TextFigure
-          figureText="^/~"
-          caption="Stylized version of syradar at ^[utan]*"
         />
       </Card>
     </div>

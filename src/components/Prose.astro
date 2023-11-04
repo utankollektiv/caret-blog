@@ -1,3 +1,15 @@
-<div class="prose prose-nord dark:prose-invert">
+---
+interface Props {
+  fake?: boolean;
+}
+
+const { fake = false } = Astro.props;
+---
+
+<div
+  class={`prose prose-slate  dark:prose-invert
+   ${fake ? "max-w-none" : ""}
+  `}
+>
   <slot />
 </div>

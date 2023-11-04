@@ -1,8 +1,13 @@
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ["Cormorant Variable", ...defaultTheme.fontFamily.serif],
+      },
       colors: {
         nord: {
           /* Tailwind-like Nord color names */
@@ -25,41 +30,41 @@ export default {
         },
       },
       typography: ({ theme }) => ({
-        nord: {
+        slate: {
           css: {
-            "--tw-prose-body": theme("colors.nord[0]"),
-            "--tw-prose-headings": theme("colors.nord[0]"),
-            "--tw-prose-lead": theme("colors.nord[7]"),
-            "--tw-prose-links": theme("colors.nord[10]"),
-            "--tw-prose-bold": theme("colors.nord[0]"),
-            "--tw-prose-counters": theme("colors.nord[15]"),
-            "--tw-prose-bullets": theme("colors.nord[8]"),
-            "--tw-prose-hr": theme("colors.nord[3]"),
-            "--tw-prose-quotes": theme("colors.nord[1]"),
-            "--tw-prose-quote-borders": theme("colors.nord[8]"),
-            "--tw-prose-captions": theme("colors.nord[0]"),
-            "--tw-prose-code": theme("colors.nord[0]"),
-            "--tw-prose-pre-code": theme("colors.nord[0]"),
-            "--tw-prose-pre-bg": theme("colors.nord[5]"),
-            "--tw-prose-th-borders": theme("colors.nord[4]"),
-            "--tw-prose-td-borders": theme("colors.nord[4]"),
+            // "--tw-prose-body": theme("colors"),
+            // "--tw-prose-headings": theme("colors"),
+            // "--tw-prose-lead": theme("colors"),
+            //"--tw-prose-links": theme("colors.red[500]"),
+            // "--tw-prose-bold": theme("colors"),
+            // "--tw-prose-counters": theme("colors"),
+            "--tw-prose-bullets": theme("colors.red[500]"),
+            // "--tw-prose-hr": theme("colors"),
+            // "--tw-prose-quotes": theme("colors"),
+            // "--tw-prose-quote-borders": theme("colors"),
+            "--tw-prose-captions": theme("colors.slate[800]"),
+            // "--tw-prose-code": theme("colors"),
+            // "--tw-prose-pre-code": theme("colors"),
+            // "--tw-prose-pre-bg": theme("colors"),
+            // "--tw-prose-th-borders": theme("colors"),
+            // "--tw-prose-td-borders": theme("colors"),
 
-            "--tw-prose-invert-body": theme("colors.nord[6]"),
-            "--tw-prose-invert-headings": theme("colors.nord[6]"),
-            "--tw-prose-invert-lead": theme("colors.nord[7]"),
-            "--tw-prose-invert-links": theme("colors.nord[8]"),
-            "--tw-prose-invert-bold": theme("colors.nord[6]"),
-            "--tw-prose-invert-counters": theme("colors.nord[8]"),
-            "--tw-prose-invert-bullets": theme("colors.nord[8]"),
-            "--tw-prose-invert-hr": theme("colors.nord[5]"),
-            "--tw-prose-invert-quotes": theme("colors.nord[5]"),
-            "--tw-prose-invert-quote-borders": theme("colors.nord[8]"),
-            "--tw-prose-invert-captions": theme("colors.nord[6]"),
-            "--tw-prose-invert-code": theme("colors.nord[6]"),
-            "--tw-prose-invert-pre-code": theme("colors.nord[6]"),
-            "--tw-prose-invert-pre-bg": theme("colors.nord[1]"),
-            "--tw-prose-invert-th-borders": theme("colors.nord[3]"),
-            "--tw-prose-invert-td-borders": theme("colors.nord[3]"),
+            // "--tw-prose-invert-body": theme("colors"),
+            // "--tw-prose-invert-headings": theme("colors"),
+            // "--tw-prose-invert-lead": theme("colors"),
+            //--tw-prose-invert-links": theme("colors.red[500]"),
+            // "--tw-prose-invert-bold": theme("colors"),
+            // "--tw-prose-invert-counters": theme("colors"),
+            "--tw-prose-invert-bullets": theme("colors.red[500]"),
+            // "--tw-prose-invert-hr": theme("colors"),
+            // "--tw-prose-invert-quotes": theme("colors"),
+            // "--tw-prose-invert-quote-borders": theme("colors"),
+            "--tw-prose-invert-captions": theme("colors.slate[200]"),
+            // "--tw-prose-invert-code": theme("colors"),
+            // "--tw-prose-invert-pre-code": theme("colors"),
+            // "--tw-prose-invert-pre-bg": theme("colors"),
+            // "--tw-prose-invert-th-borders": theme("colors"),
+            // "--tw-prose-invert-td-borders": theme("colors"),
           },
         },
       }),

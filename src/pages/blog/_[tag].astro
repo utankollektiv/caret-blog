@@ -25,12 +25,12 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<Layout title={tag}>
+<Layout title={tag} pageType="blog">
   <p>Posts tagged with {tag}</p>
   <ul class="flex flex-col gap-4">
     {
       posts.map((post) => (
-        <li class="flex flex-col gap-1 rounded bg-nord-5 p-4 shadow-md dark:bg-nord-1 dark:shadow-nord-0">
+        <li class="flex flex-col gap-1 rounded p-4 shadow-md">
           <Link url={`/blog/${post.slug}`} transition:name={post.data.title}>
             {post.data.title}
           </Link>

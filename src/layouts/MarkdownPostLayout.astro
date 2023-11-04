@@ -5,56 +5,50 @@ import TagList from "../components/TagList.astro";
 import Layout from "./Layout.astro";
 import { formatDate } from "../dates";
 import Utan from "../components/Utan.astro";
+import Card from "../components/Card.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
-  <header class="mb-2">
-    <Prose>
-      <h1
-        class="text-nord-0 dark:text-nord-6"
-        transition:name={frontmatter.title}
-      >
-        {frontmatter.title}
-      </h1>
-    </Prose>
-    <p>
-      Written by <Utan>
-        {frontmatter.author}
-      </Utan>
-       and published on <time
-        datetime={frontmatter.date}
-        transition:name={frontmatter.title + frontmatter.date}
-      >
-        {formatDate(frontmatter.publishDate)}
-      </time>
-    </p>
+<Layout title={frontmatter.title} pageType="blog">
+  <article class="mx-auto lg:max-w-prose">
+    <header class="mb-8">
+      <Prose fake>
+        <h1 transition:name={frontmatter.title}>
+          {frontmatter.title}
+        </h1>
+      </Prose>
+      <p>
+        Written by <Utan>
+          {frontmatter.author}
+        </Utan>
+         and published on <time datetime={frontmatter.date}>
+          {formatDate(frontmatter.publishDate)}
+        </time>
+      </p>
 
-    <TagList
-      tags={frontmatter.tags}
-      transition:name={frontmatter.title + frontmatter.tags.join(":")}
-    />
+      <TagList tags={frontmatter.tags} />
+    </header>
 
-    <div
-      class="mb-8 mt-8 rounded-lg border border-nord-4 shadow dark:border-nord-1"
-    >
-      {
-        frontmatter.image ? (
-          <Image
-            src={frontmatter.image.src}
-            alt={frontmatter.image.alt}
-            width={frontmatter.image.w}
-            height={frontmatter.image.h}
-            class="h-auto w-full rounded-lg"
-            transition:name={frontmatter.title + frontmatter.image}
-          />
-        ) : null
-      }
-    </div>
+    {
+      frontmatter.image ? (
+        <section class="mb-8">
+          <Card>
+            <Image
+              src={frontmatter.image.src}
+              alt={frontmatter.image.alt}
+              width={frontmatter.image.w}
+              height={frontmatter.image.h}
+              class="h-auto w-full"
+              transition:name={frontmatter.title + frontmatter.image}
+            />
+          </Card>
+        </section>
+      ) : null
+    }
 
     <Prose>
       <slot />
     </Prose>
-  </header>
+  </article>
 </Layout>

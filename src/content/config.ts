@@ -29,7 +29,6 @@ const blogCollection = defineCollection({
       // You can also transform a date string (e.g. "2022-07-08") to a Date object
       // publishDate: z.string().transform((str) => new Date(str)),
       // Advanced: Validate that the string is also an email
-      authorContact: z.string().email(),
       // Advanced: Validate that the string is also a URL
       // ! canonicalURL: z.string().url(),
     }),

@@ -6,28 +6,34 @@ import UtanLogo from "../components/UtanLogo.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="^utan about">
+<Layout title="^utan about" pageType="blog">
   <Prose>
-    <h1>About <UtanLogo /></h1>
+    <h1>
+      About
+      <Utan>
+        <UtanLogo />
+      </Utan>
+    </h1>
 
     <p>
       ^[utan]* is meant to be a place free from the shackles of work, making
-      money and products. This place aims to be both free as in speech and free
-      as in free beer<Link url="#cite-note-1">
-        <sup id="cite-ref-1">1</sup>
-      </Link>.
+      money and products. This place aims to be both <Link
+        url="https://en.wikipedia.org/wiki/Gratis_versus_libre"
+      >
+        gratis and libre
+      </Link>, free as in free speech and free as in free beer.
     </p>
 
     <p>
       We are tired of the constant pressure to be productive, to be creative, to
       hustle. Longing for a simpler time in the cradle of the Internet. A time
       when the web was a place for exploration, for learning, for fun. A time
-      when the web was a place for <Utan>people</Utan>.
+      when the web was a place for <em>people</em>.
     </p>
 
     <p>
       We are not here to make money, we are not here to make products, we are
-      not here to make content. We are here to make <Utan>experiences</Utan>.
+      not here to make content. We are here to make <em>experiences</em>.
     </p>
 
     <p>Things that we like:</p>
@@ -52,16 +58,4 @@ import Layout from "../layouts/Layout.astro";
       <UtanLogo />
     </Utan>
   </Prose>
-  <footer class="mt-12">
-    <ul class="">
-      <li id="cite-note-1">
-        <span class="mr-2">
-          <Link url="#cite-ref-1">^</Link>
-        </span>
-        <Link url="https://en.wikipedia.org/wiki/Gratis_versus_libre">
-          Gratis versus libre
-        </Link> on Wikipedia.
-      </li>
-    </ul>
-  </footer>
 </Layout>

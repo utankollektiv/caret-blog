@@ -2,15 +2,14 @@
 title: "Post-Coding Session Self-Reflection Checklist"
 description: "Things to consider when reflecting on your coding session."
 author: "~"
-image:
-  src: "./post-1.png"
-  alt: "A screenshot of the start page."
-  w: 1266
-  h: 593
+# image:
+#   src: "./post-1.png"
+#   alt: "A screenshot of the start page."
+#   w: 1266
+#   h: 593
 tags: ["flow", "self-reflection", "blogging"]
-authorContact: "utankollektiv@protonmail.com"
 language: "en"
-isDraft: true
+isDraft: false
 publishDate: 2021-10-02
 ---
 
@@ -46,8 +45,7 @@ publishDate: 2021-10-02
 
 ## 7.Solutions and Breakthroughs
 
--Were there instances where you devised particularly innovative or non-conventional solutions?
-
+- Were there instances where you devised particularly innovative or non-conventional solutions?
 - How often did you encounter significant breakthroughs that advanced your progress or changed your approach?
 - Were there moments when you experienced sudden clarity or "aha" moments?
 - How did these solutions or breakthroughs influence the direction or outcome of your coding session?
