@@ -44,8 +44,6 @@ import Utan from "./Utan.astro";
 
   export function inputHandler(event: Event) {
     if (event.target instanceof HTMLInputElement) {
-      console.log("label", event.target.value);
-
       const val = event.target.value.trim().toLowerCase();
 
       if (val === decodeHtmlEntities(sce)) {

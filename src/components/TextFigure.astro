@@ -10,7 +10,9 @@ const { caption, figureText } = Astro.props;
 ---
 
 <figure>
-  <div class="rounded bg-nord-6 p-4 text-center text-4xl dark:bg-nord-0">
+  <div
+    class="grid aspect-video place-content-center rounded bg-nord-6 p-4 text-center text-4xl dark:bg-nord-0"
+  >
     <Utan>{figureText}</Utan>
   </div>
   <figcaption class="mt-1 text-sm">
