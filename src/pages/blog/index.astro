@@ -9,7 +9,7 @@ import Layout from "../../layouts/Layout.astro";
 const allBlogPosts = await getCollection("blog");
 ---
 
-<Layout title="^utan blog">
+<Layout title="^utan blog" pageType="blog">
   <header class="mb-8">
     <Prose fake>
       <h1>^blog archive</h1>
