@@ -2,112 +2,123 @@
 import Utan from "./Utan.astro";
 ---
 
-<input type="hidden" id="request-token" name="request-token" value="" />
-<div class="mb-4 flex flex-col gap-1">
-  <label for="honeypot-robots" class="font-medium">
-    Type "<span id="robots" class="font-mono font-medium">
-      &#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;
-    </span>" to reveal our email address:
-  </label>
-  <input
-    type="text"
-    name="honeypot-robots"
-    id="honeypot-robots"
-    class="max-w-xs rounded border border-stone-400 bg-white px-4 py-2 font-sans dark:border-stone-700 dark:bg-stone-900"
-    value=""
-  />
-</div>
+<utan-contact>
+  <input type="hidden" id="request-token" name="request-token" value="" />
+  <div class="mb-4 flex flex-col gap-1">
+    <label for="honeypot-robots" class="font-medium">
+      Type "<span id="robots" class="font-mono font-medium"></span>" to reveal
+      our email address:
+    </label>
+    <input
+      type="text"
+      name="honeypot-robots"
+      id="honeypot-robots"
+      class="max-w-xs rounded border border-stone-400 bg-white px-4 py-2 font-sans dark:border-stone-700 dark:bg-stone-900"
+      value=""
+    />
+  </div>
 
-<Utan>
-  <div data-id="email"></div>
-</Utan>
+  <Utan>
+    <div data-id="email"></div>
+  </Utan>
+</utan-contact>
 
 <script>
-  const sce =
-    "&#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;";
+  class UtanContact extends HTMLElement {
+    #sce =
+      "&#x73;&#x68;&#x6F;&#x77;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x61;&#x63;&#x74;&#x20;&#x65;&#x6D;&#x61;&#x69;&#x6C;";
+    constructor() {
+      super();
 
-  // This function is for decoding the HTML entities back to normal text
-  function decodeHtmlEntities(str: string) {
-    return str.replace(/&#x([a-fA-F0-9]+);/g, (_, code) =>
-      String.fromCharCode(parseInt(code, 16)),
-    );
-  }
+      const sceSpan = this.querySelector("#robots");
 
-  // Testing the decoding function
+      if (sceSpan) {
+        sceSpan.innerHTML = this.#sce;
+      }
 
-  export function inputHandler(event: Event) {
-    if (event.target instanceof HTMLInputElement) {
-      const val = event.target.value.trim().toLowerCase();
+      const robotsInput: HTMLInputElement | null =
+        this.querySelector("#honeypot-robots");
 
-      if (val === decodeHtmlEntities(sce)) {
-        const token: HTMLInputElement | null =
-          document.querySelector("#request-token");
+      if (robotsInput) {
+        robotsInput.addEventListener("keyup", (e) =>
+          this.inputHandler(e, robotsInput),
+        );
+      }
+    }
+    decodeHtmlEntities(str: string): string {
+      return str.replace(/&#x([a-fA-F0-9]+);/g, (_, code) =>
+        String.fromCharCode(parseInt(code, 16)),
+      );
+    }
 
-        if (token == null || token === undefined) {
-          return;
-        }
+    inputHandler(event: Event, robotsInput: HTMLInputElement): void {
+      if (event.target instanceof HTMLInputElement) {
+        const val = event.target.value.trim().toLowerCase();
 
-        if (token.value === null || token.value === undefined) {
-          return;
-        }
+        if (val === this.decodeHtmlEntities(this.#sce)) {
+          /**
+           * @type {HTMLInputElement | null}
+           */
+          const token: HTMLInputElement | null =
+            this.querySelector("#request-token");
 
-        if (token.value.length > 0 || token.value !== "") {
-          return;
-        }
+          if (token == null || token === undefined) {
+            return;
+          }
 
-        event.target.parentElement?.removeChild(event.target);
+          if (token.value === null || token.value === undefined) {
+            return;
+          }
 
-        const email = document.querySelector("[data-id=email]");
+          if (token.value.length > 0 || token.value !== "") {
+            return;
+          }
 
-        if (email) {
-          [
-            "&#117;",
-            "&#116;",
-            "&#097;",
-            "&#110;",
-            "&#107;",
-            "&#111;",
-            "&#108;",
-            "&#108;",
-            "&#101;",
-            "&#107;",
-            "&#116;",
-            "&#105;",
-            "&#118;",
-            "&#064;",
-            "&#112;",
-            "&#114;",
-            "&#111;",
-            "&#116;",
-            "&#111;",
-            "&#110;",
-            "&#109;",
-            "&#097;",
-            "&#105;",
-            "&#108;",
-            "&#046;",
-            "&#099;",
-            "&#111;",
-            "&#109;",
-          ].forEach((char) => {
-            const span = document.createElement("span");
-            span.innerHTML = char;
-            email.appendChild(span);
-          });
+          const email = this.querySelector("[data-id=email]");
+
+          if (email) {
+            email.innerHTML = "";
+
+            [
+              "&#117;",
+              "&#116;",
+              "&#097;",
+              "&#110;",
+              "&#107;",
+              "&#111;",
+              "&#108;",
+              "&#108;",
+              "&#101;",
+              "&#107;",
+              "&#116;",
+              "&#105;",
+              "&#118;",
+              "&#064;",
+              "&#112;",
+              "&#114;",
+              "&#111;",
+              "&#116;",
+              "&#111;",
+              "&#110;",
+              "&#109;",
+              "&#097;",
+              "&#105;",
+              "&#108;",
+              "&#046;",
+              "&#099;",
+              "&#111;",
+              "&#109;",
+            ].forEach((char) => {
+              const span = document.createElement("span");
+              span.innerHTML = char;
+              email.appendChild(span);
+            });
+
+            robotsInput.classList.add("hidden");
+          }
         }
       }
     }
   }
-
-  const sceSpan = document.querySelector("#robots");
-
-  if (sceSpan) {
-    sceSpan.innerHTML = sce;
-  }
-
-  const robotsInput = document.querySelector("#honeypot-robots");
-
-  if (robotsInput) {
-    (robotsInput as HTMLInputElement).addEventListener("keyup", inputHandler);
-  }
+  customElements.define("utan-contact", UtanContact);
 </script>
