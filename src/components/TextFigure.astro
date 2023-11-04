@@ -1,5 +1,4 @@
 ---
-import Prose from "./Prose.astro";
 import Utan from "./Utan.astro";
 
 type Props = {
@@ -16,9 +15,7 @@ const { caption, figureText } = Astro.props;
   >
     <Utan>{figureText}</Utan>
   </div>
-  <Prose>
-    <figcaption>
-      {caption}
-    </figcaption>
-  </Prose>
+  <figcaption>
+    {caption}
+  </figcaption>
 </figure>
