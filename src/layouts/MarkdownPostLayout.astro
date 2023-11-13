@@ -40,7 +40,7 @@ const { frontmatter } = Astro.props;
               width={frontmatter.image.w}
               height={frontmatter.image.h}
               class="h-auto w-full"
-              transition:name={frontmatter.title + frontmatter.image}
+              transition:name={frontmatter.title + frontmatter.image.src}
             />
           </Card>
         </section>
