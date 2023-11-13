@@ -21,7 +21,21 @@ const allBlogPosts = await getCollection("blog");
       allBlogPosts.map((post) => (
         <li>
           <Prose fake>
+                        <div class="flex gap-2">
+             {
+              post.image ? (
+                    <Image
+                      src={post.image.src}
+                      alt={post.image.alt}
+                      width={post.image.w}
+                      height={post.image.h}
+                      class="h-auto w-full"
+                      transition:name={post.title + post.image.src}
+                    />
+              ) : <div class="w-full h-auto bg-neutral-500"></div>
+            }
             <div class="flex flex-col gap-2 prose-h2:m-0 ">
+
               <Link
                 url={`/blog/${post.slug}`}
                 transition:name={post.data.title}
@@ -34,6 +48,7 @@ const allBlogPosts = await getCollection("blog");
               <div class=" text-slate-600 dark:text-slate-300">
                 {formatDate(post.data.publishDate)}
               </div>
+            </div>
             </div>
           </Prose>
         </li>
