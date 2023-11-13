@@ -23,14 +23,14 @@ const allBlogPosts = await getCollection("blog");
           <Prose fake>
                         <div class="flex gap-2">
              {
-              post.image ? (
+              post.data.image ? (
                     <Image
-                      src={post.image.src}
-                      alt={post.image.alt}
-                      width={post.image.w}
-                      height={post.image.h}
+                      src={post.data.image.src}
+                      alt={post.data.image.alt}
+                      width={post.data.image.w}
+                      height={post.data.image.h}
                       class="h-auto w-full"
-                      transition:name={post.title + post.image.src}
+                      transition:name={post.data.title + post.data.image.src}
                     />
               ) : <div class="w-full h-auto bg-neutral-500"></div>
             }
