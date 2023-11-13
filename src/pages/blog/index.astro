@@ -25,12 +25,12 @@ const allBlogPosts = await getCollection("blog");
              {
               post.data.image ? (
                     <Image
-                      src={post.data.image.src}
+                      src={post.data.image.src.src}
                       alt={post.data.image.alt}
-                      width={post.data.image.w}
-                      height={post.data.image.h}
+                      width={post.data.image.src.width}
+                      height={post.data.image.src.height}
                       class="h-auto w-full"
-                      transition:name={post.data.title + post.data.image.src}
+                      transition:name={post.data.title + post.data.image.src.src}
                     />
               ) : <div class="w-full h-auto bg-neutral-500"></div>
             }
